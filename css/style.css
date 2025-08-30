@@ -1,0 +1,165 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+/* header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+} */
+.navigation{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    padding: 10px;
+}
+.navigation a{
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+    
+
+
+    font-family: "Roboto";
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.navigation:hover{
+    color:#ff4b2b;
+}
+body{
+    margin: 0px;
+    background-color: #fff;
+        font-family: 'Roboto', sans-serif;
+
+}
+.logo{
+    color: white;
+      font-family: "Bebas Neue";
+      font-size: 30px;
+      font-weight: bold;
+
+}
+.header{
+    background-image: url(../images/back.jpg);
+    background-color: rgba(0,0,0,0.3);
+    background-blend-mode: multiply;
+    background-size:cover;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 150px;
+    position: relative;
+    /* margin-left: 120px;
+    margin-right: 120px;
+    padding-bottom: 60px; */
+    
+}
+.width{
+    width: 100%;
+    height: 100vh;
+    /* margin-top: 40px; */
+}
+.heading{
+    font-size: 50px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 600;
+}
+.heading h1{
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+.heading h2{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.heading p{
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.social-icons a {
+    color: white;
+    font-size: 25px;
+    margin-right: 20px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #ff4b2b;
+}
+.myGrid{
+    flex: 1;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+    /* margin-top: 10px;
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: auto auto auto;
+    text-align: center;
+     */
+}
+.myGrid:last-child {
+            border-right: none;
+        }
+.featureHeading{
+    font-family: "Bebas Neue";
+    margin-top: 10px;
+        margin-bottom: 15px;
+    color: #140748;
+    font-family: "Bebas Neue", Sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    text-transform: none;
+    font-style: normal;
+    text-decoration: none;
+    line-height: 1.1em;
+
+}
+.featureContent{
+    font-size: 14px;
+    color: gray;
+    margin-top: 10px;
+        color: #666666;
+    font-family: "Roboto", Sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: none;
+    font-style: normal;
+    text-decoration: none;
+ line-height: 1.5;
+}
+.service{
+        display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 20px;
+}
+.border-right{
+    padding: 15px;
+    border: 1px solid lightgrey;
+}
+.Grid-4{
+    margin-bottom: -20px;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 20px;
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: auto auto auto auto;
+}
+.commitment{
+    height: 200px;
+    background-color: #140748;
+}

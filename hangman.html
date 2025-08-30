@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hangman Game</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; }
+    #letters button { margin: 3px; padding: 8px; font-size: 18px; }
+    #question { font-size: 20px; margin: 20px; }
+    #answer { font-size: 28px; letter-spacing: 10px; }
+    #status { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>HANGMAN GAME</h1>
+  <div id="question"></div>
+  <div id="answer"></div>
+  <div id="letters"></div>
+  <div id="status">Lives: <span id="lives"></span></div>
+
+  <script>
+    const apiUrl = "http://codeapi.net.cws18.my-hosting-panel.com/hangman.php";
+    let currentAnswer = "";
+    let displayAnswer = [];
+    let lives = 10;
+
+    // Create alphabet buttons
+    function createLetters() {
+      const lettersDiv = document.getElementById("letters");
+      lettersDiv.innerHTML = "";
+      for (let i = 65; i <= 90; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = String.fromCharCode(i);
+        btn.onclick = () => checkLetter(btn);
+        lettersDiv.appendChild(btn);
+      }
+    }
+
+    // Fetch random question
+    async function loadQuestion() {
+      const res = await fetch(apiUrl);
+      const data = await res.json();
+      const random = data[Math.floor(Math.random() * data.length)];
+      document.getElementById("question").textContent = random.Question;
+      currentAnswer = random.Answer.toUpperCase();
+      displayAnswer = Array(currentAnswer.length).fill("_");
+      document.getElementById("answer").textContent = displayAnswer.join(" ");
+      document.getElementById("lives").textContent = lives;
+    }
+
+    // Check letter
+    function checkLetter(button) {
+      const letter = button.textContent;
+      button.disabled = true;
+      let found = false;
+
+      for (let i = 0; i < currentAnswer.length; i++) {
+        if (currentAnswer[i] === letter) {
+          displayAnswer[i] = letter;
+          found = true;
+        }
+      }
+
+      if (!found) {
+        lives--;
+        document.getElementById("lives").textContent = lives;
+      }
+
+      document.getElementById("answer").textContent = displayAnswer.join(" ");
+
+      if (!displayAnswer.includes("_")) {
+        document.getElementById("status").textContent = "🎉 You Won!";
+        disableAllButtons();
+      } else if (lives <= 0) {
+        document.getElementById("status").textContent = "💀 Game Over! Answer was: " + currentAnswer;
+        disableAllButtons();
+      }
+    }
+
+    function disableAllButtons() {
+      document.querySelectorAll("#letters button").forEach(btn => btn.disabled = true);
+    }
+
+    // Init
+    createLetters();
+    loadQuestion();
+  </script>
+</body>
+</html>
